@@ -16,7 +16,7 @@ function shuffleArray(array) {
 const themes = {
   'YELLOW': 'Wankers with Bad Breath',
   'GREEN': 'Bangers',
-  'BLUE': 'Rohan\'s faavorites',
+  'BLUE': 'Rohan\'s favorites',
   'PURPLE': '____ Choke (BJJ)'
 }
 const itemGroups = {
