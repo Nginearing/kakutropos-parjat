@@ -38,6 +38,7 @@ const Grid = () => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [groups, setGroups] = useState([]);
   const [mistakes, setMistakes] = useState(0);
+   const [guesses, setGuesses] = useState([]);
 
 
   // Shuffle items when the button is clicked
@@ -110,16 +111,16 @@ const Grid = () => {
       </div>
 
       <div className="text-center text-lg mb-5">Mistakes remaining: {4 - mistakes}</div>
-      
-      <div className="flex justify-center items-center space-x-4">
+
+      <div className="flex justify-center items-center space-x-5 text-black">
         <button 
           onClick={handleShuffle} 
-          className="text-white bg-blue-500 hover:bg-blue-700 font-medium py-2 px-6 rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+          className=" bg-white border border-black font-medium py-2 px-6 rounded-full hover:bg-neutral-300">
           Shuffle
         </button>
         <button 
           onClick={handleSubmit} 
-          className="text-white bg-purple-600 hover:bg-purple-700 font-medium py-2 px-6 rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50">
+          className=" bg-white border border-black font-medium py-2 px-6 rounded-full">
           Submit
         </button>
       </div>
