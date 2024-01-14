@@ -61,12 +61,13 @@ const Grid = () => {
 
   const handleSubmit = () => {
     const guessString = selectedItems.sort().join(",");
+    const newGuesses = [...guesses, guessString];
     if (guesses.includes(guessString)) {
       alert("You have already made this guess.");
       return;
     }
-  
-    setGuesses(prevGuesses => [...prevGuesses, guessString]);
+    
+    setGuesses(newGuesses);
   
     // Check if the user is one item away from a correct group
     if (selectedItems.length === 4) {
@@ -92,7 +93,7 @@ const Grid = () => {
       setMistakes(prevMistakes => {
         const newMistakes = prevMistakes + 1;
         if (newMistakes === 4) {
-          alert("Here are all your guesses: " + guesses.join(" | "));
+          alert("Here are all your guesses: " + newGuesses.join(" | "));
         }
         return newMistakes;
       });
