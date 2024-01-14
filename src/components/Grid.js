@@ -27,10 +27,10 @@ const itemGroups = {
 };
 
 const groupColors = {
-  'YELLOW': 'bg-yellow-300',
-  'GREEN': 'bg-green-300',
-  'BLUE': 'bg-blue-300',
-  'PURPLE': 'bg-purple-300'
+  'YELLOW': 'bg-yellow-400',
+  'GREEN': 'bg-emerald-400',
+  'BLUE': 'bg-blue-400',
+  'PURPLE': 'bg-purple-400'
 };
 
 const Grid = () => {

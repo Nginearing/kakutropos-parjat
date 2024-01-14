@@ -6,8 +6,8 @@ const GridItem = ({ label, onSelectItem, selected }) => {
   return (
     <button 
       className={`border-2 ${
-        selected ? 'border-blue-500 bg-blue-100' : 'border-gray-300'
-      } text-center p-3 w-full aspect-square cursor-pointer hover:bg-gray-200`}
+        selected ? 'bg-slate-500 text-white bg-blue-100' : 'bg-stone-300 text-black'
+      } text-center p-3  w-full aspect-square cursor-pointer rounded-lg`}
       onClick={() => onSelectItem(label)}
     >
       <span className="text-sm font-medium">{label}</span>
