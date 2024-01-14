@@ -111,6 +111,11 @@ const Grid = () => {
     setItems(items.filter(item => !completedGroup.includes(item)));
   };
 
+  const isGuessValid = () => {
+    const guessString = selectedItems.sort().join(",");
+    return selectedItems.length === 4 && !guesses.includes(guessString);
+  };
+
   return (
     <div className="flex flex-col items-center py-5">
       <h2 className="text-lg mb-5">Create four groups of four!</h2>
@@ -153,7 +158,10 @@ const Grid = () => {
         </button>
         <button 
           onClick={handleSubmit} 
-          className=" bg-white border border-black font-medium py-2 px-6 rounded-full">
+          disabled={!isGuessValid()}
+          className={`bg-white border border-black font-medium py-2 px-6 rounded-full ${
+            isGuessValid() ? 'text-white bg-black hover:bg-neutral-700' : ''
+          }`}>
           Submit
         </button>
       </div>
