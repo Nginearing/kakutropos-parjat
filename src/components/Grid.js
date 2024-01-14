@@ -15,13 +15,13 @@ function shuffleArray(array) {
 
 const themes = {
   'YELLOW': 'Wankers with Bad Breath',
-  'GREEN': 'Bangers',
+  'GREEN': 'Rohan\'s Most Listened to Songs of 2023',
   'BLUE': 'Rohan\'s favorites',
   'PURPLE': '____ Choke (BJJ)'
 }
 const itemGroups = {
   'AVERY': 'YELLOW', 'ELA': 'YELLOW', 'NATALIE': 'YELLOW', 'TARAN': 'YELLOW',
-  'PIANOMAN': 'GREEN', 'ROBBERY PT.2': 'GREEN', '4PM IN CALABASAS': 'GREEN', 'YEAR 3000': 'GREEN',
+  'YOUNGSTAR': 'GREEN', 'ROBBERY PT.2': 'GREEN', 'DOWN UNDER': 'GREEN', 'YEAR 3000': 'GREEN',
   'BRAZILIAN JIU JITSU': 'BLUE', 'GAME OF THRONES': 'BLUE', 'SUSHI': 'BLUE', 'CODING': 'BLUE',
   'KNIFE': 'PURPLE', 'ANACONDA': 'PURPLE', 'SCISSOR': 'PURPLE', 'BASEBALL': 'PURPLE'
 };
