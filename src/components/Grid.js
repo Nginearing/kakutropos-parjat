@@ -114,7 +114,7 @@ const Grid = () => {
 
   const isGuessValid = () => {
     const guessString = selectedItems.sort().join(",");
-    return selectedItems.length === 4 && !guesses.includes(guessString);
+    return selectedItems.length === 4 && !guesses.includes(guessString) && mistakes<4;
   };
 
   return (
