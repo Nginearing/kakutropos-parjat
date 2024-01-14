@@ -82,18 +82,20 @@ const Grid = () => {
       <h2 className="text-lg mb-5">Create four groups of four!</h2>
 
       {/* Render completed groups */}
-      {groups.map((group, index) => {
-        const groupTheme = themes[itemGroups[group[0]]];
-        const groupColorClass = groupColors[itemGroups[group[0]]];
-        return (
-          <CompletedItem
-            key={index}
-            theme={groupTheme}
-            items={group.join(", ")}
-            colorClass={groupColorClass}
-          />
-        );
-      })}
+      <div className="w-full max-w-lg mx-auto"> {/* Container for CompletedItems */}
+        {groups.map((group, index) => {
+          const groupTheme = themes[itemGroups[group[0]]];
+          const groupColorClass = groupColors[itemGroups[group[0]]];
+          return (
+            <CompletedItem
+              key={index}
+              theme={groupTheme}
+              items={group.join(", ")}
+              colorClass={groupColorClass}
+            />
+          );
+        })}
+      </div>
 
       {/* Render grid items that are not yet completed */}
       <div className="grid grid-cols-4 gap-4 max-w-lg mb-5">
