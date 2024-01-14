@@ -123,12 +123,18 @@ const Grid = () => {
   };
 
   const renderGameResults = () => {
+    const renderGuessColors = (guess) => {
+      return guess.split(",").map((item, index) => (
+        <div key={index} className={`inline-block w-6 h-6 ${groupColors[itemGroups[item]]} mx-1`}></div>
+      ));
+    };
+  
     return (
       <div className="flex flex-col items-center w-full max-w-lg mx-auto mt-5">
         <h2 className="text-lg mb-5">Your Results:</h2>
         {guesses.map((guess, index) => (
-          <div key={index} className="mb-2">
-            {guess.split(",").join(", ")}
+          <div key={index} className="mb-2 flex items-center">
+            <div className="flex">{renderGuessColors(guess)}</div>
           </div>
         ))}
         <div className='mt-5'>
@@ -147,6 +153,7 @@ const Grid = () => {
       </div>
     );
   };
+  
   
 
 
