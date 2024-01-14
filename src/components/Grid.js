@@ -110,12 +110,16 @@ const Grid = () => {
   };
 
   const handleGroupCompletion = (completedGroup) => {
-    setGroups(prevGroups => [...prevGroups, completedGroup]);
+    setGroups(prevGroups => {
+      const newGroups = [...prevGroups, completedGroup];
+      if (newGroups.length === Object.keys(themes).length) { 
+        setGameFinished(true); // This will now check against the updated groups
+      }
+      return newGroups;
+    });
     setItems(items.filter(item => !completedGroup.includes(item)));
-    if (groups.length === 4) {
-      setGameFinished(true);
-    }
   };
+  
 
   const isGuessValid = () => {
     const guessString = selectedItems.sort().join(",");
