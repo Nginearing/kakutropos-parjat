@@ -60,10 +60,10 @@ const Grid = () => {
 
   const handleSubmit = () => {
     if (selectedItems.length === 4 && validateGroup(selectedItems)) {
-      setGroups([...groups, selectedItems]);
+      handleGroupCompletion(selectedItems);
       setSelectedItems([]);
     } else {
-      setMistakes(mistakes + 1);
+      setMistakes(prevMistakes => prevMistakes + 1);
     }
   };
 
@@ -72,19 +72,41 @@ const Grid = () => {
     return selectedItems.every(item => itemGroups[item] === firstItemGroup);
   };
 
-  const handleCorrect = () => {
-    
-  }
+  const handleGroupCompletion = (completedGroup) => {
+    setGroups(prevGroups => [...prevGroups, completedGroup]);
+    setItems(items.filter(item => !completedGroup.includes(item)));
+  };
 
   return (
     <div className="flex flex-col items-center py-10">
       <h2 className="text-lg mb-5">Create four groups of four!</h2>
+
+      {/* Render completed groups */}
+      {groups.map((group, index) => {
+        const groupTheme = themes[itemGroups[group[0]]];
+        const groupColorClass = groupColors[itemGroups[group[0]]];
+        return (
+          <CompletedItem
+            key={index}
+            theme={groupTheme}
+            items={group.join(", ")}
+            colorClass={groupColorClass}
+          />
+        );
+      })}
+
+      {/* Render grid items that are not yet completed */}
       <div className="grid grid-cols-4 gap-4 max-w-lg mb-5">
-        
-        {items.map((item, index) => (
-          <GridItem key={index} label={item} onSelectItem={handleItemClick} selected={selectedItems.includes(item)} />
+        {items.map((item) => (
+          <GridItem
+            key={item}
+            label={item}
+            onSelectItem={handleItemClick}
+            selected={selectedItems.includes(item)}
+          />
         ))}
       </div>
+
       <div className="text-center text-lg mb-5">Mistakes remaining: {4 - mistakes}</div>
       <button 
         onClick={handleSubmit} 
