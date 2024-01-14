@@ -38,7 +38,8 @@ const Grid = () => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [groups, setGroups] = useState([]);
   const [mistakes, setMistakes] = useState(0);
-   const [guesses, setGuesses] = useState([]);
+  const [guesses, setGuesses] = useState([]);
+  const [gameFinished, setGameFinished] = useState(false);
 
 
   // Shuffle items when the button is clicked
@@ -94,6 +95,7 @@ const Grid = () => {
         const newMistakes = prevMistakes + 1;
         if (newMistakes === 4) {
           alert("Here are all your guesses: " + newGuesses.join(" | "));
+          setGameFinished(true);
         }
         return newMistakes;
       });
@@ -110,6 +112,9 @@ const Grid = () => {
   const handleGroupCompletion = (completedGroup) => {
     setGroups(prevGroups => [...prevGroups, completedGroup]);
     setItems(items.filter(item => !completedGroup.includes(item)));
+    if (groups.length === 4) {
+      setGameFinished(true);
+    }
   };
 
   const isGuessValid = () => {
@@ -117,58 +122,91 @@ const Grid = () => {
     return selectedItems.length === 4 && !guesses.includes(guessString) && mistakes<4;
   };
 
+  const renderGameResults = () => {
+    return (
+      <div className="flex flex-col items-center w-full max-w-lg mx-auto mt-5">
+        <h2 className="text-lg mb-5">Your Results:</h2>
+        {guesses.map((guess, index) => (
+          <div key={index} className="mb-2">
+            {guess.split(",").join(", ")}
+          </div>
+        ))}
+        <div className='mt-5'>
+          {Object.keys(themes).map((themeKey, index) => {
+            const items = Object.keys(itemGroups).filter(item => itemGroups[item] === themeKey);
+            return (
+              <CompletedItem
+                key={index}
+                theme={themes[themeKey]}
+                items={items.join(", ")}
+                colorClass={groupColors[themeKey]}
+              />
+            );
+          })}
+        </div>
+      </div>
+    );
+  };
+  
+
+
   return (
     <div className="flex flex-col items-center py-5">
-      <h2 className="text-lg mb-5">Create four groups of four!</h2>
-
-      {/* Render completed groups */}
-      <div className="w-full max-w-lg mx-auto"> {/* Container for CompletedItems */}
-        {groups.map((group, index) => {
-          const groupTheme = themes[itemGroups[group[0]]];
-          const groupColorClass = groupColors[itemGroups[group[0]]];
-          return (
-            <CompletedItem
-              key={index}
-              theme={groupTheme}
-              items={group.join(", ")}
-              colorClass={groupColorClass}
-            />
-          );
-        })}
-      </div>
-
-      {/* Render grid items that are not yet completed */}
-      <div className="grid grid-cols-4 gap-4 max-w-lg mb-5">
-        {items.map((item) => (
-          <GridItem
-            key={item}
-            label={item}
-            onSelectItem={handleItemClick}
-            selected={selectedItems.includes(item)}
-          />
-        ))}
-      </div>
-
-      <div className="text-center text-lg mb-5">Mistakes remaining: {4 - mistakes}</div>
-
-      <div className="flex justify-center items-center space-x-5 text-black">
-        <button 
-          onClick={handleShuffle} 
-          className=" bg-white border border-black font-medium py-2 px-6 rounded-full hover:bg-neutral-300">
-          Shuffle
-        </button>
-        <button 
-          onClick={handleSubmit} 
-          disabled={!isGuessValid()}
-          className={`bg-white border border-black font-medium py-2 px-6 rounded-full ${
-            isGuessValid() ? 'text-white bg-black hover:bg-neutral-700' : ''
-          }`}>
-          Submit
-        </button>
-      </div>
-
+      
+  
+      {!gameFinished ? (
+        <>
+          {/* Render completed groups */}
+          <h2 className="text-lg mb-5">Create four groups of four!</h2>
+          <div className="w-full max-w-lg mx-auto">
+            {groups.map((group, index) => {
+              const groupTheme = themes[itemGroups[group[0]]];
+              const groupColorClass = groupColors[itemGroups[group[0]]];
+              return (
+                <CompletedItem
+                  key={index}
+                  theme={groupTheme}
+                  items={group.join(", ")}
+                  colorClass={groupColorClass}
+                />
+              );
+            })}
+          </div>
+  
+          {/* Render grid items that are not yet completed */}
+          <div className="grid grid-cols-4 gap-4 max-w-lg mb-5">
+            {items.map((item) => (
+              <GridItem
+                key={item}
+                label={item}
+                onSelectItem={handleItemClick}
+                selected={selectedItems.includes(item)}
+              />
+            ))}
+          </div>
+  
+          <div className="text-center text-lg mb-5">Mistakes remaining: {4 - mistakes}</div>
+  
+          <div className="flex justify-center items-center space-x-5 text-black">
+            <button 
+              onClick={handleShuffle} 
+              className="bg-white border border-black font-medium py-2 px-6 rounded-full hover:bg-neutral-300">
+              Shuffle
+            </button>
+            <button 
+              onClick={handleSubmit} 
+              disabled={!isGuessValid()}
+              className={`bg-white border border-black font-medium py-2 px-6 rounded-full ${
+                isGuessValid() ? 'text-white bg-black hover:bg-neutral-700' : ''
+              }`}>
+              Submit
+            </button>
+          </div>
+        </>
+      ) : ( renderGameResults())}
     </div>
   );
+  
 }
 
 export default Grid;
