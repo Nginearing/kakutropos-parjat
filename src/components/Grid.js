@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import GridItem from './GridItem';
+import CompletedItem from './CompletedItem';
 
 // Function to shuffle an array
 // Utilizes the Fisher-Yates (aka Knuth) Shuffle
@@ -12,10 +13,16 @@ function shuffleArray(array) {
   return shuffledArray;
 }
 
+const themes = {
+  'YELLOW': 'Wankers with Bad Breath',
+  'GREEN': 'Bangers',
+  'BLUE': 'Rohan\'s faavorites',
+  'PURPLE': '____ Choke (BJJ)'
+}
 const itemGroups = {
   'AVERY': 'YELLOW', 'ELA': 'YELLOW', 'NATALIE': 'YELLOW', 'TARAN': 'YELLOW',
-  'SINGAPORE': 'GREEN', 'CANADA': 'GREEN', 'GERMANY': 'GREEN', 'CHINA': 'GREEN',
-  'BRAZILIAN JIU JITSU': 'BLUE', 'GAME OF THRONES': 'BLUE', 'SUSHI': 'BLUE', 'PROGRAMMING': 'BLUE',
+  'PIANOMAN': 'GREEN', 'ROBBERY PT.2': 'GREEN', '4PM IN CALABASAS': 'GREEN', 'YEAR 3000': 'GREEN',
+  'BRAZILIAN JIU JITSU': 'BLUE', 'GAME OF THRONES': 'BLUE', 'SUSHI': 'BLUE', 'CODING': 'BLUE',
   'KNIFE': 'PURPLE', 'ANACONDA': 'PURPLE', 'SCISSOR': 'PURPLE', 'BASEBALL': 'PURPLE'
 };
 
@@ -27,11 +34,6 @@ const groupColors = {
 };
 
 const Grid = () => {
-  // Themes
-  // Yellow: Wankers with Bad Breath : avery, ela, natalie, marissa
-  // Green: Really cool, funny, smart and amazing people: Rohan,  
-  // Blue: Things Rohan Likes: BJJ, GOT, Sushi, Programming 
-  // Purple: ___ Chokes (Brazilian Jiu Jitsu): Knife, Anaconda, Scissor, Baseball 
   const [items, setItems] = useState(Object.keys(itemGroups));
   const [selectedItems, setSelectedItems] = useState([]);
   const [groups, setGroups] = useState([]);
@@ -70,10 +72,15 @@ const Grid = () => {
     return selectedItems.every(item => itemGroups[item] === firstItemGroup);
   };
 
+  const handleCorrect = () => {
+    
+  }
+
   return (
     <div className="flex flex-col items-center py-10">
       <h2 className="text-lg mb-5">Create four groups of four!</h2>
       <div className="grid grid-cols-4 gap-4 max-w-lg mb-5">
+        
         {items.map((item, index) => (
           <GridItem key={index} label={item} onSelectItem={handleItemClick} selected={selectedItems.includes(item)} />
         ))}
