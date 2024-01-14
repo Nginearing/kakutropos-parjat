@@ -68,23 +68,37 @@ const Grid = () => {
   
     setGuesses(prevGuesses => [...prevGuesses, guessString]);
   
-    if (selectedItems.length === 3 && items.some(item => validateGroup([...selectedItems, item]))) {
-      alert("You're only one away from a correct group!");
+    // Check if the user is one item away from a correct group
+    if (selectedItems.length === 4) {
+      const closeGuess = selectedItems.some((selectedItem, _, arr) => {
+        const otherItems = arr.filter(item => item !== selectedItem); // Remove one item
+        return items.some(item => {
+          if (!otherItems.includes(item) && !selectedItems.includes(item)) {
+            return validateGroup([...otherItems, item]); // Check if the new combination is valid
+          }
+          return false;
+        });
+      });
+  
+      if (closeGuess) {
+        alert("One Away...");
+      }
     }
   
-    if (selectedItems.length === 4 && validateGroup(selectedItems)) {
+    if (validateGroup(selectedItems)) {
       handleGroupCompletion(selectedItems);
       setSelectedItems([]);
     } else {
       setMistakes(prevMistakes => {
         const newMistakes = prevMistakes + 1;
         if (newMistakes === 4) {
-          alert("You've used all your mistakes. Here are all your guesses: " + guesses.join(" | "));
+          alert("Here are all your guesses: " + guesses.join(" | "));
         }
         return newMistakes;
       });
     }
   };
+  
   
 
   const validateGroup = (selectedItems) => {
