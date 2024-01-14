@@ -60,13 +60,32 @@ const Grid = () => {
   };
 
   const handleSubmit = () => {
+    const guessString = selectedItems.sort().join(",");
+    if (guesses.includes(guessString)) {
+      alert("You have already made this guess.");
+      return;
+    }
+  
+    setGuesses(prevGuesses => [...prevGuesses, guessString]);
+  
+    if (selectedItems.length === 3 && items.some(item => validateGroup([...selectedItems, item]))) {
+      alert("You're only one away from a correct group!");
+    }
+  
     if (selectedItems.length === 4 && validateGroup(selectedItems)) {
       handleGroupCompletion(selectedItems);
       setSelectedItems([]);
     } else {
-      setMistakes(prevMistakes => prevMistakes + 1);
+      setMistakes(prevMistakes => {
+        const newMistakes = prevMistakes + 1;
+        if (newMistakes === 4) {
+          alert("You've used all your mistakes. Here are all your guesses: " + guesses.join(" | "));
+        }
+        return newMistakes;
+      });
     }
   };
+  
 
   const validateGroup = (selectedItems) => {
     const firstItemGroup = itemGroups[selectedItems[0]];
