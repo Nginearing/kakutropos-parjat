@@ -78,7 +78,7 @@ const Grid = () => {
   };
 
   return (
-    <div className="flex flex-col items-center py-10">
+    <div className="flex flex-col items-center py-5">
       <h2 className="text-lg mb-5">Create four groups of four!</h2>
 
       {/* Render completed groups */}
@@ -110,18 +110,20 @@ const Grid = () => {
       </div>
 
       <div className="text-center text-lg mb-5">Mistakes remaining: {4 - mistakes}</div>
-      <button 
-        onClick={handleSubmit} 
-        className="text-white bg-purple-600 hover:bg-purple-700 font-medium py-2 px-6 rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50"
-      >
-        Submit
-      </button>
-      <button 
-        onClick={handleShuffle} 
-        className="text-white bg-blue-500 hover:bg-blue-700 font-medium py-2 px-6 rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 mt-3"
-      >
-        Shuffle
-      </button>
+      
+      <div className="flex justify-center items-center space-x-4">
+        <button 
+          onClick={handleShuffle} 
+          className="text-white bg-blue-500 hover:bg-blue-700 font-medium py-2 px-6 rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+          Shuffle
+        </button>
+        <button 
+          onClick={handleSubmit} 
+          className="text-white bg-purple-600 hover:bg-purple-700 font-medium py-2 px-6 rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50">
+          Submit
+        </button>
+      </div>
+
     </div>
   );
 }
