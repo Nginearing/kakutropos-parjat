@@ -64,7 +64,7 @@ const Grid = () => {
     const guessString = selectedItems.sort().join(",");
     const newGuesses = [...guesses, guessString];
     if (guesses.includes(guessString)) {
-      alert("You have already made this guess.");
+      alert("Already Guessed!");
       return;
     }
     
@@ -94,7 +94,6 @@ const Grid = () => {
       setMistakes(prevMistakes => {
         const newMistakes = prevMistakes + 1;
         if (newMistakes === 4) {
-          alert("Here are all your guesses: " + newGuesses.join(" | "));
           setGameFinished(true);
         }
         return newMistakes;

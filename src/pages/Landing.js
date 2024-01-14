@@ -10,7 +10,7 @@ const Landing = () => {
         Intellectuals McGill
       </h1>
       <h2 className="text-black-300 text-2xl font-bold">
-        <span className="font-bold text-2xl mr-2">Connections</span>
+        <span className="font-bold text-2xl mr-2">Rohan Connections</span>
         {' '}
         <span className="font-normal text-lg">
           {currentDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
