@@ -141,6 +141,14 @@ const Grid = () => {
             <div className="flex">{renderGuessColors(guess)}</div>
           </div>
         ))}
+        
+        <button 
+        onClick={() => copyToClipboard(formatGuessesForSharing())}
+        className="mt-5 px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg"
+        >
+          Copy to share
+        </button>
+
         <div className='mt-5'>
           {Object.keys(themes).map((themeKey, index) => {
             const items = Object.keys(itemGroups).filter(item => itemGroups[item] === themeKey);
@@ -177,6 +185,41 @@ const Grid = () => {
         ))}
       </div>
     );
+  };
+
+  const formatGuessesForSharing = () => {
+    const emojiMap = {
+      'YELLOW': '🟨',
+      'GREEN': '🟩',
+      'BLUE': '🟦',
+      'PURPLE': '🟪'
+    };
+    
+    const formattedGuesses = guesses.map(guess => {
+      return guess.split(",").map(item => emojiMap[itemGroups[item]]).join('');
+    }).join('\n');
+    
+    const shareText = `Rohan Connections\nPuzzle #1\n${formattedGuesses}`;
+    return shareText;
+  };
+  
+  const copyToClipboard = (text) => {
+    if (navigator.clipboard) { // Check if the browser supports clipboard API
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Copied to clipboard!");
+      }).catch(err => {
+        console.error("Could not copy text: ", err);
+      });
+    } else {
+      // Fallback for older browsers
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+      alert("Copied to clipboard!");
+    }
   };
   
   
