@@ -271,8 +271,8 @@ const Grid = () => {
             <button 
               onClick={handleSubmit} 
               disabled={!isGuessValid()}
-              className={`bg-white border border-black font-medium py-2 px-6 rounded-full ${
-                isGuessValid() ? 'text-white bg-black hover:bg-neutral-700' : ''
+              className={`bg-white border text-black border-black font-medium py-2 px-6 rounded-full ${
+                isGuessValid() ? 'hover:text-white bg-black hover:bg-neutral-700' : ''
               }`}>
               Submit
             </button>
