@@ -157,9 +157,31 @@ const Grid = () => {
       </div>
     );
   };
-  
-  
 
+
+  const MistakesRemaining = ({ mistakes }) => {
+    const totalMistakesAllowed = 4;
+    // Calculate the index from which the circles should be visible (black)
+    const firstVisibleCircleIndex = totalMistakesAllowed - mistakes;
+  
+    return (
+      <div className="flex items-center text-center text-lg mb-5">
+        <span className="mr-2">Mistakes remaining:</span>
+        {[...Array(totalMistakesAllowed)].map((_, index) => (
+          <div
+            key={index}
+            className={`ml-1 w-4 h-4 rounded-full ${
+              index >= firstVisibleCircleIndex ? 'bg-transparent' : 'bg-black'
+            }`}
+          />
+        ))}
+      </div>
+    );
+  };
+  
+  
+  
+  
 
   return (
     <div className="flex flex-col items-center py-5">
@@ -196,7 +218,7 @@ const Grid = () => {
             ))}
           </div>
   
-          <div className="text-center text-lg mb-5">Mistakes remaining: {4 - mistakes}</div>
+          <MistakesRemaining mistakes={mistakes} />
   
           <div className="flex justify-center items-center space-x-5 text-black">
             <button 
