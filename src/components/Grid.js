@@ -19,11 +19,19 @@ const themes = {
   'BLUE': 'Rohan\'s favorites',
   'PURPLE': '____ Choke (BJJ)'
 }
+/*
 const itemGroups = {
   'AVERY': 'YELLOW', 'ELA': 'YELLOW', 'NATALIE': 'YELLOW', 'TARAN': 'YELLOW',
   'YOUNGSTAR': 'GREEN', 'ROBBERY PT.2': 'GREEN', 'DOWN UNDER': 'GREEN', 'YEAR 3000': 'GREEN',
   'BRAZILIAN JIU JITSU': 'BLUE', 'GAME OF THRONES': 'BLUE', 'SUSHI': 'BLUE', 'CODING': 'BLUE',
   'KNIFE': 'PURPLE', 'ANACONDA': 'PURPLE', 'SCISSOR': 'PURPLE', 'BASEBALL': 'PURPLE'
+};
+*/
+const itemGroups = {
+  'AVERY': 'YELLOW', 'ANACONDA': 'PURPLE', 'YOUNGSTAR': 'GREEN', 'TARAN': 'YELLOW',
+   'ROBBERY PT.2': 'GREEN', 'DOWN UNDER': 'GREEN', 'BASEBALL': 'PURPLE',  'SUSHI': 'BLUE',
+  'BRAZILIAN JIU JITSU': 'BLUE', 'SCISSOR': 'PURPLE',  'NATALIE': 'YELLOW','CODING': 'BLUE',
+  'KNIFE': 'PURPLE', 'ELA': 'YELLOW', 'GAME OF THRONES': 'BLUE', 'YEAR 3000': 'GREEN',
 };
 
 const groupColors = {
