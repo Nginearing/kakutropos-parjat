@@ -135,7 +135,7 @@ const Grid = () => {
   
     return (
       <div className="flex flex-col items-center w-full max-w-lg mx-auto mt-5">
-        <h2 className="text-lg mb-5">Your Results:</h2>
+        <h2 className="text-lg mb-5 font-semibold">Your Results:</h2>
         {guesses.map((guess, index) => (
           <div key={index} className="mb-2 flex items-center">
             <div className="flex">{renderGuessColors(guess)}</div>
@@ -144,9 +144,9 @@ const Grid = () => {
         
         <button 
         onClick={() => copyToClipboard(formatGuessesForSharing())}
-        className="mt-5 px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg"
+        className="mt-5 px-4 py-2 font-semibold border border-black rounded-lg bg-white text-black hover:bg-black hover:text-white transition-colors duration-300"
         >
-          Copy to share
+          Copy & Share
         </button>
 
         <div className='mt-5'>
