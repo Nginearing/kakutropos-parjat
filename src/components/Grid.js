@@ -14,24 +14,17 @@ function shuffleArray(array) {
 }
 
 const themes = {
-  'YELLOW': 'Wankers with Bad Breath',
+  'YELLOW': 'Countries Rohan\'s Lived in',
   'GREEN': 'Rohan\'s Most Listened to Songs of 2023',
   'BLUE': 'Rohan\'s favorites',
   'PURPLE': '____ Choke (BJJ)'
 }
-/*
+
 const itemGroups = {
-  'AVERY': 'YELLOW', 'ELA': 'YELLOW', 'NATALIE': 'YELLOW', 'TARAN': 'YELLOW',
-  'YOUNGSTAR': 'GREEN', 'ROBBERY PT.2': 'GREEN', 'DOWN UNDER': 'GREEN', 'YEAR 3000': 'GREEN',
-  'BRAZILIAN JIU JITSU': 'BLUE', 'GAME OF THRONES': 'BLUE', 'SUSHI': 'BLUE', 'CODING': 'BLUE',
-  'KNIFE': 'PURPLE', 'ANACONDA': 'PURPLE', 'SCISSOR': 'PURPLE', 'BASEBALL': 'PURPLE'
-};
-*/
-const itemGroups = {
-  'AVERY': 'YELLOW', 'ANACONDA': 'PURPLE', 'YOUNGSTAR': 'GREEN', 'TARAN': 'YELLOW',
+  'SINGAPORE': 'YELLOW', 'ANACONDA': 'PURPLE', 'YOUNGSTAR': 'GREEN', 'CHINA': 'YELLOW',
    'ROBBERY PT.2': 'GREEN', 'DOWN UNDER': 'GREEN', 'BASEBALL': 'PURPLE',  'SUSHI': 'BLUE',
-  'BRAZILIAN JIU JITSU': 'BLUE', 'SCISSOR': 'PURPLE',  'NATALIE': 'YELLOW','CODING': 'BLUE',
-  'KNIFE': 'PURPLE', 'ELA': 'YELLOW', 'GAME OF THRONES': 'BLUE', 'YEAR 3000': 'GREEN',
+  'BRAZILIAN JIU JITSU': 'BLUE', 'SCISSOR': 'PURPLE',  'CANADA': 'YELLOW','CODING': 'BLUE',
+  'KNIFE': 'PURPLE', 'GERMANY': 'YELLOW', 'GAME OF THRONES': 'BLUE', 'YEAR 3000': 'GREEN',
 };
 
 const groupColors = {
@@ -49,8 +42,6 @@ const Grid = () => {
   const [guesses, setGuesses] = useState([]);
   const [gameFinished, setGameFinished] = useState(false);
 
-
-  // Shuffle items when the button is clicked
   const handleShuffle = () => {
     setItems(shuffleArray(items));
   };
@@ -211,7 +202,7 @@ const Grid = () => {
   };
   
   const copyToClipboard = (text) => {
-    if (navigator.clipboard) { // Check if the browser supports clipboard API
+    if (navigator.clipboard) { 
       navigator.clipboard.writeText(text).then(() => {
         alert("Copied to clipboard!");
       }).catch(err => {
