@@ -14,17 +14,17 @@ function shuffleArray(array) {
 }
 
 const themes = {
-  'YELLOW': 'Countries Rohan\'s Lived in',
-  'GREEN': 'Rohan\'s Most Listened to Songs of 2023',
-  'BLUE': 'Rohan\'s favorites',
-  'PURPLE': '____ Choke (BJJ)'
+  'YELLOW': 'Greek Gods',
+  'GREEN': 'Roman Emperors',
+  'BLUE': 'Game of Thrones Houses',
+  'PURPLE': '____ Sort (Sorting Algorithms)'
 }
 
 const itemGroups = {
-  'SINGAPORE': 'YELLOW', 'ANACONDA': 'PURPLE', 'YOUNGSTAR': 'GREEN', 'CHINA': 'YELLOW',
-   'ROBBERY PT.2': 'GREEN', 'DOWN UNDER': 'GREEN', 'BASEBALL': 'PURPLE',  'SUSHI': 'BLUE',
-  'BRAZILIAN JIU JITSU': 'BLUE', 'SCISSOR': 'PURPLE',  'CANADA': 'YELLOW','CODING': 'BLUE',
-  'KNIFE': 'PURPLE', 'GERMANY': 'YELLOW', 'GAME OF THRONES': 'BLUE', 'YEAR 3000': 'GREEN',
+  'ZEUS': 'YELLOW', 'QUICK': 'PURPLE', 'AURELIUS': 'GREEN', 'ATHENA': 'YELLOW',
+   'NERO': 'GREEN', 'AUGUSTUS': 'GREEN', 'MERGE': 'PURPLE',  'STARK': 'BLUE',
+  'LANNISTER': 'BLUE', 'INSERTION': 'PURPLE',  'POSEIDON': 'YELLOW','TARGARYEN': 'BLUE',
+  'BUBBLE': 'PURPLE', 'HADES': 'YELLOW', 'TYRELL': 'BLUE', 'CLAUDIUS': 'GREEN',
 };
 
 const groupColors = {
