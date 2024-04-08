@@ -14,17 +14,20 @@ function shuffleArray(array) {
 }
 
 const themes = {
-  'YELLOW': 'Greek Gods',
-  'GREEN': 'Roman Emperors',
-  'BLUE': 'Game of Thrones Houses',
-  'PURPLE': '____ Sort (Sorting Algorithms)'
+  'YELLOW': 'Roman Gods',
+  'GREEN': 'Constellations',
+  'BLUE': 'Gas Giants',
+  'PURPLE': 'Things associated with the Sith'
 }
 
 const itemGroups = {
-  'ZEUS': 'YELLOW', 'QUICK': 'PURPLE', 'AURELIUS': 'GREEN', 'ATHENA': 'YELLOW',
-   'NERO': 'GREEN', 'AUGUSTUS': 'GREEN', 'MERGE': 'PURPLE',  'STARK': 'BLUE',
-  'LANNISTER': 'BLUE', 'INSERTION': 'PURPLE',  'POSEIDON': 'YELLOW','TARGARYEN': 'BLUE',
-  'BUBBLE': 'PURPLE', 'HADES': 'YELLOW', 'TYRELL': 'BLUE', 'CLAUDIUS': 'GREEN',
+  'JUPITER': 'BLUE', 'PLUTO': 'YELLOW', 'NEPTUNE': 'BLUE', 'URANUS': 'BLUE',
+
+   'VENUS': 'YELLOW', 'ORION': 'GREEN', 'ARIES': 'GREEN',  'SIDIOUS': 'PURPLE',
+
+  'SCORPIUS': 'GREEN', 'CYGNUS': 'GREEN',  'RULE OF TWO': 'PURPLE', 'MARS': 'YELLOW',
+
+  'ELECTRICITY': 'PURPLE', 'SATURN': 'BLUE', 'MERCURY': 'YELLOW', 'RED': 'PURPLE',
 };
 
 const groupColors = {
