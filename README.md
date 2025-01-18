@@ -1,4 +1,2 @@
-## Connections by Rohan
-Inspired by the New York Time's Connections game by Wyna Liu. Made for my friends to play.
-
-Use google chrome on laptop for best experience.
+## Kakutropos Parjat!
+A Viossa kakutropos game that repurposes code that was inspired by the New York Times Connections game.
